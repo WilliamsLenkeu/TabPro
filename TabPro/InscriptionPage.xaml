@@ -20,8 +20,8 @@
             <TextBox Name="UsernameTextBox" Width="200" Margin="0 5"/>
 
             <Label Content="Numéro de téléphone"/>
-                <TextBox Name="PhoneTextBox" Width="200" Margin="0 5"/>
-           
+            <TextBox Name="PhoneTextBox" Width="200" Margin="0 5"/>
+
             <Label Content="Poste"/>
             <TextBox x:Name="posteTextBox" Width="200" Margin="0 5"/>
         </StackPanel>
@@ -35,7 +35,6 @@
 
             <Label Content="Ville"/>
             <TextBox Name="CityTextBox" Width="200" Margin="0 5"/>
-
 
             <Label Content="Mot de passe"/>
             <PasswordBox Name="PasswordBox" Width="200" Margin="0 5"/>
