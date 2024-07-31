@@ -1,0 +1,31 @@
+﻿<Window x:Class="TabPro.presentation3"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TabPro"
+        Title="presentation3" Height="450" Width="800">
+    <Grid Background="#FFB0B9F4">
+        <!-- Titre -->
+        <TextBlock Text="Commencez dès maintenant" FontSize="24" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,27,0,0" FontFamily="Segoe UI Black" />
+
+        <!-- Texte au milieu de la page -->
+        <TextBlock Text="Profitez de l'expérience utilisateur inégalable que vous offre cette application " FontSize="18" VerticalAlignment="Top" Width="615" TextWrapping="Wrap" HorizontalAlignment="Center" Margin="0,305,0,0" />
+        <!-- Bouton "Next" -->
+        <Button Content="Next" Width="80" Height="30" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,10,10">
+            <Button.Background>
+                <SolidColorBrush Color="Black" />
+            </Button.Background>
+            <Button.Foreground>
+                <SolidColorBrush Color="White" />
+            </Button.Foreground>
+        </Button>
+
+        <!-- Trois points de navigation -->
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,10">
+            <Ellipse Width="10" Height="10" Fill="Gray" Margin="2" />
+            <Ellipse Width="10" Height="10" Fill="Gray" Margin="2" />
+            <Ellipse Width="10" Height="10" Fill="White" Margin="2" />
+        </StackPanel>
+    </Grid>
+</Window>
