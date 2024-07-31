@@ -10,7 +10,10 @@
             <Label Content="Adresse e-mail" HorizontalAlignment="Left" VerticalAlignment="Center"/>
             <TextBox Name="EmailTextBox" Width="200" Margin="0 5"/>
             <Label Content="Mot de passe" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-            <PasswordBox Name="PasswordBox" Width="200" Margin="0 5"/>
+            <StackPanel Orientation="Horizontal">
+                <PasswordBox Name="PasswordBox" Width="200" Margin="0 5"/>
+                <Button Content="👁" Click="TogglePasswordVisibility" Background="#FFB0B9F4" Padding="0,0,0,0" BorderBrush="#FFB0B9F4"/>
+            </StackPanel>
             <Button Content="Connexion" Width="100" HorizontalAlignment="Center" Click="LoginButton_Click" Height="27">
                 <Button.Template>
                     <ControlTemplate TargetType="Button">
@@ -27,8 +30,12 @@
                     </Style>
                 </Button.Style>
             </Button>
-
-
+            <TextBlock Margin="0 10" HorizontalAlignment="Center">
+                <Hyperlink NavigateUri="MotDePasseOubliePage.xaml">Mot de passe oublié ?</Hyperlink>
+            </TextBlock>
+            <TextBlock Margin="0 10" HorizontalAlignment="Center">
+                Pas encore inscrit ? <Hyperlink NavigateUri="InscriptionPage.xaml">Inscrivez-vous</Hyperlink>
+            </TextBlock>
         </StackPanel>
     </Grid>
 </Window>

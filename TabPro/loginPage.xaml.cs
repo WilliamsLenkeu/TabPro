@@ -19,6 +19,7 @@ namespace TabPro
     /// </summary>
     public partial class loginPage : Window
     {
+        private bool isPasswordVisible = false;
         public loginPage()
         {
             InitializeComponent();
@@ -28,5 +29,13 @@ namespace TabPro
         {
 
         }
+
+        private void TogglePasswordVisibility(object sender, RoutedEventArgs e)
+        {
+            isPasswordVisible = !isPasswordVisible;
+            PasswordBox.PasswordChar = isPasswordVisible ? '\0' : '•'; // Affiche le mot de passe ou des points
+        }
+
     }
+
 }
