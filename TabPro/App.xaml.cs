@@ -27,7 +27,7 @@ namespace TabPro
                     var config = new FirebaseAuthConfig
                     {
                         ApiKey = firebaseApiKey,
-                        AuthDomain = "<DOMAIN>.firebaseapp.com",
+                        AuthDomain = "datamanager-e94af.firebaseapp.com",
                         Providers = new FirebaseAuthProvider[]
                         {
                             new EmailProvider()
