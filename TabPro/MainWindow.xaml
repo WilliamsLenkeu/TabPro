@@ -5,10 +5,40 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TabPro"
         mc:Ignorable="d"
-        Title="LoginPage" 
-        Height="450" 
-        Width="800">
-    <Grid>
+        Title="Page de Connexion"
+        Height="450"
+        Width="800"
+        Background="#F0F0F0">
+    <Grid Margin="20">
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Width="350">
+            <!-- Titre principal -->
+            <TextBlock Text="Authentification Firebase" FontSize="24" FontWeight="Bold" Margin="0,0,0,30" HorizontalAlignment="Center" Foreground="#333333"/>
 
+            <!-- Champs de saisie pour l'email -->
+            <TextBlock Text="Adresse e-mail" Margin="0,0,0,5" FontWeight="Regular" Foreground="#555555"/>
+            <Border BorderBrush="#E0E0E0" BorderThickness="1" CornerRadius="4" Margin="0,0,0,15">
+                <TextBox x:Name="EmailTextBox" Padding="12" Background="White" Foreground="#333333" BorderBrush="Transparent"/>
+            </Border>
+
+            <!-- Champs de saisie pour le mot de passe -->
+            <TextBlock Text="Mot de passe" Margin="0,0,0,5" FontWeight="Regular" Foreground="#555555"/>
+            <Border BorderBrush="#E0E0E0" BorderThickness="1" CornerRadius="4" Margin="0,0,0,15">
+                <PasswordBox x:Name="PasswordTextBox" Padding="12" Background="White" Foreground="#333333"/>
+            </Border>
+
+            <!-- Champs de saisie pour le nom d'affichage -->
+            <TextBlock Text="Nom d'affichage (pour l'inscription)" Margin="0,0,0,5" FontWeight="Regular" Foreground="#555555"/>
+            <Border BorderBrush="#E0E0E0" BorderThickness="1" CornerRadius="4" Margin="0,0,0,20">
+                <TextBox x:Name="DisplayNameTextBox" Padding="12" Background="White" Foreground="#333333"/>
+            </Border>
+
+            <!-- Boutons d'action -->
+            <Border BorderBrush="#0078D7" BorderThickness="1" CornerRadius="4" Margin="0,0,0,10">
+                <Button Content="Se connecter" Click="SignInButton_Click" Background="#0078D7" Foreground="White" Padding="15" BorderBrush="Transparent" FontWeight="SemiBold"/>
+            </Border>
+            <Border BorderBrush="#0078D7" BorderThickness="1" CornerRadius="4">
+                <Button Content="S'inscrire" Click="SignUpButton_Click" Background="#0078D7" Foreground="White" Padding="15" BorderBrush="Transparent" FontWeight="SemiBold"/>
+            </Border>
+        </StackPanel>
     </Grid>
 </Window>
