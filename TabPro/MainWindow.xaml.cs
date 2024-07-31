@@ -1,13 +1,7 @@
-﻿using System.Text;
+﻿using Firebase.Auth;
+using System;
+using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace TabPro
 {
@@ -16,9 +10,47 @@ namespace TabPro
     /// </summary>
     public partial class MainWindow : Window
     {
-        public MainWindow()
+        private readonly FirebaseAuthClient _authClient;
+
+        public MainWindow(FirebaseAuthClient authClient)
         {
             InitializeComponent();
+            _authClient = authClient;
+        }
+
+        private async void SignInButton_Click(object sender, RoutedEventArgs e)
+        {
+            string email = EmailTextBox.Text;
+            string password = PasswordTextBox.Password;
+
+            try
+            {
+                var userCredential = await _authClient.SignInWithEmailAndPasswordAsync(email, password);
+                var user = userCredential.User;
+                MessageBox.Show($"Welcome {user.Info.DisplayName}");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Sign-in error: {ex.Message}");
+            }
+        }
+
+        private async void SignUpButton_Click(object sender, RoutedEventArgs e)
+        {
+            string email = EmailTextBox.Text;
+            string password = PasswordTextBox.Password;
+            string displayName = DisplayNameTextBox.Text;
+
+            try
+            {
+                var userCredential = await _authClient.CreateUserWithEmailAndPasswordAsync(email, password, displayName);
+                var user = userCredential.User;
+                MessageBox.Show($"User created: {user.Info.DisplayName}");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Sign-up error: {ex.Message}");
+            }
         }
     }
 }

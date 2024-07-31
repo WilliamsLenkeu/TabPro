@@ -1,16 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Firebase.Auth;
+using System;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace TabPro
 {
@@ -20,22 +10,46 @@ namespace TabPro
     public partial class loginPage : Window
     {
         private bool isPasswordVisible = false;
-        public loginPage()
+        private readonly FirebaseAuthClient _authClient;
+
+        public loginPage(FirebaseAuthClient authClient)
         {
             InitializeComponent();
+            _authClient = authClient;
         }
 
-        private void LoginButton_Click(object sender, RoutedEventArgs e)
+        private async void LoginButton_Click(object sender, RoutedEventArgs e)
         {
+            string email = EmailTextBox.Text;
+            string password = PasswordBox.Password;
 
+            try
+            {
+                var userCredential = await _authClient.SignInWithEmailAndPasswordAsync(email, password);
+                var user = userCredential.User;
+                MessageBox.Show($"Welcome {user.Info.DisplayName}");
+                // Navigate to the main application window or dashboard
+                MainWindow mainWindow = new MainWindow(_authClient);
+                mainWindow.Show();
+                this.Close(); // Close the login window
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Sign-in error: {ex.Message}");
+            }
         }
 
         private void TogglePasswordVisibility(object sender, RoutedEventArgs e)
         {
             isPasswordVisible = !isPasswordVisible;
-            PasswordBox.PasswordChar = isPasswordVisible ? '\0' : '•'; // Affiche le mot de passe ou des points
+            if (isPasswordVisible)
+            {
+                PasswordBox.PasswordChar = '\0'; // Show password
+            }
+            else
+            {
+                PasswordBox.PasswordChar = '•'; // Hide password
+            }
         }
-
     }
-
 }
