@@ -10,9 +10,6 @@ using System.Windows;
 
 namespace TabPro
 {
-    /// <summary>
-    /// Interaction logic for App.xaml
-    /// </summary>
     public partial class App : Application
     {
         private readonly IHost _host;
@@ -27,7 +24,7 @@ namespace TabPro
                     var config = new FirebaseAuthConfig
                     {
                         ApiKey = firebaseApiKey,
-                        AuthDomain = "<DOMAIN>.firebaseapp.com",
+                        AuthDomain = "datamanager-e94af.firebaseapp.com",
                         Providers = new FirebaseAuthProvider[]
                         {
                             new EmailProvider()
@@ -36,6 +33,7 @@ namespace TabPro
                     };
 
                     services.AddSingleton(new FirebaseAuthClient(config));
+
                     services.AddSingleton<MainWindow>();
                 })
                 .Build();
