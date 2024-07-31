@@ -34,16 +34,18 @@ namespace TabPro
 
                     services.AddSingleton(new FirebaseAuthClient(config));
 
+                    // Register MainWindow and loginPage with DI container
                     services.AddSingleton<MainWindow>();
+                    services.AddSingleton<loginPage>();
                 })
                 .Build();
         }
 
         protected override void OnStartup(StartupEventArgs e)
         {
-            var mainWindow = _host.Services.GetRequiredService<MainWindow>();
-            MainWindow = mainWindow;
-            MainWindow.Show();
+            var authClient = _host.Services.GetRequiredService<FirebaseAuthClient>();
+            var loginWindow = new loginPage(authClient);
+            loginWindow.Show();
 
             base.OnStartup(e);
         }
